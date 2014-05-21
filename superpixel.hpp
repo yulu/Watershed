@@ -58,7 +58,7 @@ void SuperPixel::calculateColor(Mat& refImage){
 	b = b==0 ? 0 : b/m_total;
 	g = g==0 ? 0 : g/m_total;
 
-	m_color = Vec3b((uchar)r, (uchar)g, (uchar)b);
+	m_color = Vec3b((uchar)(r+10), (uchar)(g+10), (uchar)(b+10));
 
 }
 

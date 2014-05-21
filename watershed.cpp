@@ -10,6 +10,9 @@ using namespace std;
 
 Mat markerMask, img;
 int sp_size = 20;
+int kernel = 21;
+float sigma = 2.0;
+
 vector<SuperPixel> superPixels;
 
 int main(int argc, char** argv)
@@ -24,7 +27,7 @@ int main(int argc, char** argv)
 	}
 
 	//blur the image for a trial
-	GaussianBlur(img0, img0, Size(13,13), 1.0);
+	GaussianBlur(img0, img0, Size(kernel,kernel), sigma);
 
 	img0.copyTo(img);
 	cvtColor(img, markerMask, CV_BGR2GRAY);
@@ -58,7 +61,7 @@ int main(int argc, char** argv)
 
 
 	//paint the watershed image
-	for(i = 0; i < markers.rows; i++)
+	for(i = 0; i < markers.rows; i++) 
 		for(j = 0; j < markers.cols; j++)
 		{
 			int index = markers.at<int>(i, j);
